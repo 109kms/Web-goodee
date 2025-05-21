@@ -107,6 +107,99 @@
     <input type="submit" value="제출">
   </form>      
 
+  <hr><br>
 
+  <form action="/asdf">
+    <input type="email" name="email" placeholder="example@naver.com">
+    <input type="password" name="password" placeholder="비밀번호">
+    <input type="submit" value="로그인">
+  </form><br><br>
+
+  
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <input type="text" placeholder="아이디">
+        </td>
+        <td rowspan="2">
+          <input type="submit" value="로그인">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="password" placeholder="비밀번호">
+        </td>
+      </tr>
+    </tbody>
+  </table><br><br>
+
+  <form action="asdf"
+        method="post">
+  <table>
+    <tbody>
+      <tr>
+        <th colspan="2">개인 정보 작성</th>
+      </tr>
+      <tr>
+        <td>이름</td>
+        <td>
+          <input type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>메일 주소</td>
+        <td>
+          <input type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>연락처</td>
+        <td>
+          <input type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>블로그/홈페이지</td>
+        <td>
+          <input type="text">
+        </td>
+      </tr>
+      <tr>
+        <th colspan="2">
+          <input type="submit" value="제출하기">
+          <input type="submit" value="다시작성">
+        </th>
+      </tr>
+    </tbody>
+  </table>
+  </form>
+
+  <br><br>
+
+  <form action="asdf" method="post">
+    <span>아이디
+      <input type="text" placeholder="아이디">
+      <input type="submit" value="중복확인">
+    </span><br>
+    <span>비밀번호
+      <input type="password" placeholder="새 비밀번호">
+    </span><br>
+    <span>비밀번호 확인
+      <input type="password" placeholder="비밀번호 확인">
+    </span><br>
+    <span>
+      <label for="email">이메일:</label>
+        <input type="text" id="email_id" placeholder="이메일"> @
+        <input type="text" id="email_domain" placeholder="직접 입력 가능">
+        <select id="email_select" onchange="updateDomain()">
+        <option value="">도메인 선택</option>
+        <option value="naver.com">naver.com</option>
+        <option value="gmail.com">gmail.com</option>
+        <option value="daum.com">daum.com</option>
+        </select>
+    </span><br>
+
+  </form><br><br><br>
 </body>
 </html>
