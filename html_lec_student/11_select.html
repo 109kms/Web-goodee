@@ -34,5 +34,33 @@
         옵션을 목록에서 숨깁니다. 주로 안내문구를 나타내고자 하는 경우 사용합니다.
   -->
 
+  <!-- option 태그의 내부 텍스트를 value로 사용합니다 -->
+  <form action="/select">
+    <select name="mobile">
+      <option>SKT</option>
+      <option>KT</option>
+      <option>LGU+</option>
+    </select>
+    <input type="submit" value="제출">
+  </form>
+
+  <hr>
+
+  <!-- option 태그에 value 속성을 만들면 해당 value 속성 값이 전달됩니다. -->
+  <form action="/select">
+    <select name="nation">
+      <option value="01">가나 +01</option>
+      <option value="02">가봉 +02</option>
+      <option value="82" selected>한국 +82</option>
+      <option value="99">일본 +99</option>
+    </select>
+    <input type="submit" value="제출">
+  </form>
+
+  <hr>
+
+  <form
+
+
 </body>
 </html>
