@@ -62,30 +62,42 @@
     /* 
       position: absolute;는 HTML 요소의 기본 배치를 무시한 위치로 이동할 수 있음.
       position: static;이 아닌 가장 가까운 조상 내부에서 top, bottom, left, right 같은 이동 옵션이 적용 됨
-      
+
     */
     .container {
       width: 200px;
       height: 200px;
       border: 1px solid pink;
-      position: relative;
+      position: relative;  /* 부모 요소 */
     }
     .container > .box {
       width: 50px;
       height: 50px;
       border: 1px solid skyblue;
+      position: absolute;  /* 자식 요소 */
     }
     .container > .box:nth-child(1) {
-      position: absolute;  /* 가장 가까운 조상 기준으로 이동함 */
       top: 50px;
       left: 50px;
     }
+    .container > .box:nth-child(2) {
+      top: 50px;
+      right: 50px;
+    }
+    .container > .box:nth-child(3) {
+      bottom: 50px;
+      left: 50px;
+    }
+    .container > .box:nth-child(4) {
+      bottom: 50px;
+      right: 50px;
+    }
   </style>
   <div class="container">
-    <div class="box">box</div>
-    <div class="box">box</div>
-    <div class="box">box</div>
-    <div class="box">box</div>
+    <div class="box">a</div>
+    <div class="box">b</div>
+    <div class="box">c</div>
+    <div class="box">d</div>
   </div>
 
 
