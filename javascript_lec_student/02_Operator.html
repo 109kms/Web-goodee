@@ -19,16 +19,16 @@
     → parseInt(5 / 2) == 2
 
 2. 증감 연산자
-  1) ++a : 전위 증가
-  2) a++ : 후위 증가
+  1) ++a : 전위 증가 (증가 후에 사용)
+  2) a++ : 후위 증가 (사용 후에 증가)
   3) --a : 전위 감소
   4) a-- : 후위 감소
 
 3. 대입 연산자 / 복합 대입 연산자
-  1) 대입
+  1) 대입 (할당, Assignment)
     a = b : b에 저장된 값을 변수 a로 보냄
-  2) 복합
-    (1) a += 1 : a = a + 1 로 해석
+  2) 복합 (연산 + 할당)
+    (1) a += 1 : a = a + 1 로 해석 (a + 1 값을 a에 할당: a를 1 증가시킴킴)
     (2) a -= 1 : a = a - 1 로 해석
     (3) a *= 1 : a = a * 1 로 해석
     (4) a /= 1 : a = a / 1 로 해석
@@ -77,6 +77,52 @@
     console.log(str);
       -> hello world
 -->
+
+  <script>
+
+    const a = 5;
+    const b = 2;
+
+    console.log(a + b);
+    console.log(a - b);
+    console.log(a * b);
+    console.log('나누기', a / b);
+    console.log('나머지', a % b);
+    console.log('몫', parseInt(a / b));    
+
+  </script>
+
+  <script>
+
+    let n = 1;
+
+    console.log('++n', ++n);  // n을 증가하고 보여줌
+    console.log('n++', n++);  // n을 보여주고 증가함
+
+    console.log('n', n);
+
+    console.log(n++);
+    console.log(n);
+
+  </script>
+
+  <script>
+
+    let i = 10;
+
+    i += 5;
+
+    console.log(i);
+
+    console.log(i += 5);
+
+  </script>
+
+
+
+
+
+
 
 </body>
 </html>
