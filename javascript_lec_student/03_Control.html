@@ -339,6 +339,35 @@
   </script>
 
 
+ <!-- 혼자 연습 -->
+<script>
+  {
+    let a = 1;
+    let b = '';
+    for (a = 1; a <= 5; a++) {
+      b += a + ',';
+    }
+    console.log(b.slice(0, -1));
+  }
+  {
+    let value = 10;
+    let str = '';
+    for (value; value >= 1; value--) {
+      str += value + ',';
+    }
+    console.log(str.slice(0, -1));
+  }
+  // 연습) <ul><li>1분기</li><li>2분기</li>...<li>4분기</li></ul> 문자열 만들어 화면에 출력하기
+  {
+    let asd = 1;
+    let str = '';
+    for (asd; asd <= 4; asd++) {
+      str += `<li>${asd}분기</li>`;
+    }
+    console.log(`<ul>${str}</ul>`);
+    document.write(`<ul>${str}</ul>`);
+  }
+</script>
 
 </body>
 </html>
