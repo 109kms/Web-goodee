@@ -319,7 +319,23 @@
     document.write(qwe);
   }
 
+  </script>
 
+  <script>
+  {
+    // 무한 루프 : 의도적으로 반복문이 끝나지 않도록 설정한 루프
+    // 1,2,3,4,5, 문자열 출력하기
+
+    let str = "";
+    let value = 1;
+    while (true) {
+      str += value++ + ",";
+      if (value > 5) {  // value == 6
+        break;          // 루프 종료 시 사용하는 break
+      }
+    }
+    console.log(str);
+  }
   </script>
 
 
