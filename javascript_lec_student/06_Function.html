@@ -145,6 +145,7 @@
 
 <script>
 
+// 1) 배열을 받아서 사용하는 함수
   const infoArray = function(numbers) {
     for (let i = 0; i < numbers.length; i++) {
       console.log(numbers[i]);
@@ -153,7 +154,7 @@
 
   infoArray([10, 20, 30]);
 
-  // rest 문법을 활용하는 함수
+  // 2) rest 문법을 활용하는 함수
   const infoRest = function(arg, ...rest) {  // 여기서 사용된 rest 매개변수는 배열임. 나머지 매개변수는 항상 마지막에 선언함.
     console.log(arg);
     for (let i = 0; i < rest.length; i++) {
@@ -167,7 +168,35 @@
   infoRest('x', 'y', 'z');
 </script>
 
+<script>
 
+  // 객체가 전달되는 경우 매개변수 대신 구조 분해 할당 문법을 사용할 수 있음.
+  const infoObject = ({model, maker, price}) => {
+    console.log(model);
+    console.log(maker);
+    console.log(price);
+  }
+
+  // 객체를 인자로 사용용
+  infoObject({
+    model: 'BMW 530d',
+    maker: 'BMW',
+    price: 8000,
+  });
+
+</script>
+
+<script>
+
+  function handle(callback) {  //-- ② 전달된 익명 함수를 callback 매개변수에 저장. (함수 표현식)
+    callback();  //---------------- ③ callback 함수를 호출. 전달된 익명 함수가 실행됨
+  }
+
+  handle(function() {  //---------- ① 익명 함수를 handle 함수에 인자로 전달.
+    console.log('Anonymous 함수가 호출되었습니다.');
+  });
+
+</script>
 
 
 
