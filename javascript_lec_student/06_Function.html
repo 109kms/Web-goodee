@@ -17,10 +17,10 @@
 2. 함수 작성 방법
   1) 함수 선언식
     (1) function 키워드와 함수명으로 정의하고, 호이스팅됩니다.
-    (2) 형식: function 함수명() { ... }
+    (2) 형식: function 함수명() { ... }  //-------------- 기명 함수 (이름이 있는 함수)
   2) 함수 표현식
     (1) 함수를 변수에 할당합니다. 호이스팅되지 않습니다.
-    (2) 형식: const 변수명 = function() { ... }
+    (2) 형식: const 변수명 = function() { ... }   //----- 익명 함수 (이름이 없는 함수)
   3) 화살표 함수
     (1) 간결한 함수 표현식을 지원합니다. this 바인딩이 불가합니다.
     (2) 형식: const 변수명 = () => { ... }
@@ -99,6 +99,77 @@
       })
     })
 -->
+
+<script>
+
+  //----- 1. 함수 선언식
+  function declaration() {
+    console.log('declaration 함수가 호출되었습니다.');
+  }
+
+  //----- 2. 함수 표현식
+  const expr = function() {
+    console.log('expr 함수가 호출되었습니다.');
+  }
+
+  //----- 3. 화살표 함수(함수 표현식 간결화)
+  const arrow = () => {
+    console.log('arrow 함수가 호출되었습니다.');
+  }
+
+  // 함수 호출하기 (함수 실행하기)
+  declaration();
+  declaration();
+  expr();
+  expr();
+  arrow();
+  arrow();
+
+</script>
+
+<script>
+
+  function info(name, age) {  //-- 매개변수(Parameter): name, age
+    console.log(name, age);
+  }
+
+  info('김민석', 25);  //--------- 인자(Argument): '김민석', 25
+  info('홍길동', 30);  //--------- 인자(Argument): '홍길동', 30
+  
+
+  let name = '고길동';
+  let age = 40;
+  info(name, age);     //--------- 인자(Argument): name, age
+
+</script>
+
+<script>
+
+  const infoArray = function(numbers) {
+    for (let i = 0; i < numbers.length; i++) {
+      console.log(numbers[i]);
+    }
+  }
+
+  infoArray([10, 20, 30]);
+
+  // rest 문법을 활용하는 함수
+  const infoRest = function(arg, ...rest) {  // 여기서 사용된 rest 매개변수는 배열임. 나머지 매개변수는 항상 마지막에 선언함.
+    console.log(arg);
+    for (let i = 0; i < rest.length; i++) {
+      console.log(rest[i]);
+    }
+  }
+
+  // 전달하는 인자(Argument)의 개수가 다른 경우
+  infoRest('x');
+  infoRest('x', 'y');
+  infoRest('x', 'y', 'z');
+</script>
+
+
+
+
 
 </body>
 </html>
