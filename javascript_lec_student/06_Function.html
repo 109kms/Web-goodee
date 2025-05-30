@@ -108,8 +108,8 @@
   }
 
   //----- 2. 함수 표현식
-  const expr = function() {
-    console.log('expr 함수가 호출되었습니다.');
+  const expr = function() {                     // const expr = declaration;
+    console.log('expr 함수가 호출되었습니다.');              // declaration(); XXXXX
   }
 
   //----- 3. 화살표 함수(함수 표현식 간결화)
@@ -177,7 +177,7 @@
     console.log(price);
   }
 
-  // 객체를 인자로 사용
+  // 인자로 객체를 사용
   infoObject({
     model: 'BMW 530d',
     maker: 'BMW',
@@ -262,10 +262,12 @@
 
   // 객체를 반환하는 함수
   function retObject(nickname, age) {
-    return {
-      nickname: nickname,  //-- nickname: '홍길동'
-      age: age,   //----------- age: 30
+    return {    // return {nickname,age} {}라고 100% 객체는 아님님
+      nickname,  //----- nickname: '홍길동'
+      age  //----------- age: 30
     }
+    // 객체 프로퍼티 단축 표기법에 의해 아래와 같은 코드도 가능.
+    // return { nickname, age }
   }
   const user = retObject('홍길동', 30);
   console.log(user.nickname, user.age);
@@ -297,65 +299,8 @@
   //       나머지 경우에는 부모의 동의가 없어도 이용이 가능합니다.
   //       prompt를 이용해서 몸무게를 입력 받아 isPossible 함수에 전달합니다.
   //       isPossible 함수는 놀이기구의 이용이 가능하면 true 아니면 false를 반환합니다.
-  //       최종 실행 시 "놀이기구 탑승이 가능합니다.", "놀이기구 탑승이 거절절되었습니다." 중 하나의 메시지를 출력합니다.
-
-  function isPossible(weight) {
-    if (weight >= 90) {
-      return false;
-    } else if (weight <= 40) {
-      return confirm("놀이기구 탑승에 동의하십니까?");
-    } else {
-      return true;
-    }
-  }
+  //       최종 실행 시 "놀이기구 탑승이 가능합니다.", "놀이기구 탑승이 거절되었습니다." 중 하나의 메시지를 출력합니다.
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // function isPossible(weight) {
   //   if (weight >= 90) {
   //     return false;
@@ -373,8 +318,52 @@
   // } else {
   //   alert("놀이기구 탑승이 거절되었습니다.");
   // }
-</script>
+  //=================
+  // function isPossible(weight) {
+  //   if (weight >= 90) {
+  //     return false;
+  //   } else if (weight <= 40) {
+  //     return confirm("놀이기구 탑승에 동의하십니까?");
+  //   } else {
+  //     return true;
+  //   }
+  // }
+  
 
+  // 연습) 함수와 값을 전달하면 전달한 함수에 값을 연산한 결과를 반환하는 함수를 구성합니다.
+  function add(a, b) { return a + b; }
+  function sub(a, b) { return a - b; }
+  function mul(a, b) { return a * b; }
+  function div(a, b) { return a / b; }
+  function mod(a, b) { return a % b; }
+
+  // calculate 함수 만들기
+
+  const calculate = (callback, a, b) => {
+    return callback(a, b);
+  }
+
+  const value1 = 5;
+  const value2 = 3;
+  const addResult = calculate(add, value1, value2);
+  console.log(addResult);
+
+  // 연습) 배열과 함수를 전달하면 배열의 모든 요소를 전달한 함수 처리하여 반환합니다.
+  function handleArray(arr, callback) {
+    // 구현할 곳
+    const result = [];
+    for (const element of arr) {
+      result.push(callback(element));
+    }
+    return result;
+  }
+  const arrResult = handleArray([1, 2, 3], function(num) {
+    return num * 3;
+  });
+  // arrResult = [3, 6, 9]
+  console.log(arrResult);
+
+</script>
 
 
 </body>
