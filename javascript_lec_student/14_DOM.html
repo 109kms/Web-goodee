@@ -264,12 +264,51 @@
   {
     // 속성(Attribute) 다루기: 태그 작성 시 명시한 속성을 Attribute라고 합니다.
     const input = document.getElementById("id");
+
+    // 속성 확인: getAttribute()
     console.log("type 속성", input.getAttribute("type"));
     console.log("id 속성", input.getAttribute("id"));
     console.log("class 속성", input.getAttribute("class"));
     console.log("value 속성", input.getAttribute("value"));
     console.log("readonly 속성", input.getAttribute("readonly"));  //--- readonly 속성에는 값이 없으므로 빈 문자열("")
     console.log("name 속성", input.getAttribute("name"));  //----------- name 속성 자체가 없으므로 null
+
+    // 속성 변경: setAttribute()
+    input.setAttribute("value", "master");  // value="master"의 의미
+    
+    // 속성 삭제: removeAttribute()
+    input.removeAttribute("readonly");  // readonly 속성 지우기
+
+  }
+
+</script>
+
+<hr>
+
+<p>
+  <input type="text" id="pw" class="inp" value="1234" readonly>
+</p>
+<script>
+
+  {
+    // 속성(Property) 다루기: DOM Tree에서 처리하는 속성을 의미합니다. 태그에 명시한 속성과 다를 수 있습니다.
+    const input = document.getElementById("pw");
+
+    console.log(input);  // 프로퍼티 확인하기 가장 좋은 방법
+
+    // 프로퍼티 확인
+    console.log(input.type);
+    console.log(input.id);
+    console.log(input.className);
+    console.log(input.value);
+    console.log(input.readOnly);
+
+    // 프로퍼티 수정
+    input.type = 'password';
+
+    // 프로퍼티 삭제 (DOM 객체의 프로퍼티는 지울 수 없습니다.)
+    delete input.value;  // 동작 안함.
+    
   }
 
 </script>
