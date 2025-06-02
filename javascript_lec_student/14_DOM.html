@@ -21,8 +21,8 @@
   <body>                                  HEAD             BODY
     <h1>Header</h1>                        ↓             ↙      ↘
     <p>Paragraph</p>                     TITLE        H1          P
-  </body>                                  ↓           ↓          ↓
-  </html>                            "My Document"  "Header"  "Paragraph"
+  </bodyy>                                  ↓           ↓          ↓
+  </htmll>                            "My Document"  "Header"  "Paragraph"
 
                       DOM 객체 계층 구조
 
@@ -69,7 +69,7 @@
 
 4. 주요 Document 객체 반환 메소드
   1) Document.getElementById(id)
-    (1) 주어진 문자열과 일치하는 id 속성을 가진 요소를 Element 객체로 반환합니다.
+    (1) 주어진 문자열과 일치하는 id 속성을 가진 요소를 HTMLElement 객체로 반환합니다.
     (2) 없으면 null을 반환합니다.
   2) Document.getElementsByClassName(class)
     (1) 주어진 문자열과 일치하는 class 속성을 가진 모든 요소를 HTMLCollection 객체로 반환합니다.
@@ -170,6 +170,39 @@
   checked      | checked            | checked: true
                | checked="checked"  |
 -->
+
+<div id="box1" class="my-box">my box1</div>
+<div id="box2" class="my-box">my box2</div>
+<div id="box3" class="my-box">my box3</div>
+
+<script>
+  
+  {
+    //----- HTMLElement 객체를 반환하는 메소드 다루기
+    const box1 = document.getElementById('box1');
+    const box2 = document.querySelector('#box2');
+    console.log(box1);
+    console.log(box2);
+    console.log(document.querySelector(".my-box"));  // 첫 번째 요소만 선택됩니다.
+  }
+
+  {
+    //----- HTMLCollection 객체를 반환하는 메소드 다루기
+    const divList = document.getElementsByTagName("div");
+    const myBoxList = document.getElementsByClassName("my-box");
+    console.log(divList);
+    console.log(myBoxList);
+  }
+
+  {
+    //----- NodeList 객체를 반환하는 메소드 다루기
+    const divList = document.querySelectorAll("div");  // CSS 태그 선택자
+    const myBoxList = document.querySelectorAll(".my-box");  // CSS 클래스 선택자
+    console.log(divList);
+    console.log(myBoxList);
+  }
+  
+</script>
 
 </body>
 </html>

@@ -117,20 +117,18 @@
     //       전달한 인자 값에 따라 타이머가 동작합니다.
     //       timer(3) 호출하면 화면에 "3", "2", "1", "타이머완료" 메시지가 순차적으로 나타납니다.
 
-    const time = (second) => {
+    const time = (second) => {  // timer 함수 호출 시 전달한 인수 3이 매개변수 second에 전달됩니다.
       const id = setInterval(() => {
         if(second === 0) {
           clearInterval(id);
           return alert('타이머완료');
         }
         document.write(`<div>${second--}</div>`);
-      }, 1000)
+      }, 2000)
     }
 
     time(3);
-
-
-     
+    
   }
 
 </script>
