@@ -211,12 +211,70 @@
 
 </ol>
 <script>
+  {
   //----- DOM 조작하기: HTML 요소 조작하기 (대표적으로 태그 조작)
   const ol = document.getElementById("seasons");
-  const fourSeasons = "<li>spring</li><li>summer</li><li>autumn</li><li>winter</li>";
+  const seasons = ['spring', 'summer', 'autumn', 'winter'];
+  let str = '';
+  seasons.forEach(season => str += '<li>' + season + '</li>');
+  const fourSeasons = str;
   ol.innerHTML = fourSeasons;
+  }
+</script>
+
+<hr>
+
+<p id="paragraph"><strong>나는 문단이다.</strong></p>
+<script>
+
+  {
+    //----- DOM 조작하기: 텍스트 조작
+    const paragraph = document.getElementById('paragraph');
+    console.log(paragraph.textContent);
+    console.log(paragraph.innerText);
+    paragraph.textContent = '문단에 전달하는 텍스트입니다.';
+    paragraph.textContent += '문단에 추가하는 텍스트입니다.';
+  }
 
 </script>
+
+<hr>
+
+<p>
+  <a id="naver-link" href="https://www.naver.com">네이버</a>
+</p>
+<script>
+
+  {
+    // DOM 조작하기: CSS 조작
+    const naverLink = document.getElementById('naver-link');
+    naverLink.style.color = '#ff0000';  // 점 표기법: camelCase
+    naverLink.style['text-decoration'] = 'none';  // 밑줄(장식선) 없애기 (대괄호 표기법: dash-case / kebab-case)
+  }
+
+</script>
+
+<hr>
+
+<p>
+  <input type="text" id="id" class="inp" value="admin" readonly>
+</p>
+<script>
+
+  {
+    // 속성(Attribute) 다루기: 태그 작성 시 명시한 속성을 Attribute라고 합니다.
+    const input = document.getElementById("id");
+    console.log("type 속성", input.getAttribute("type"));
+    console.log("id 속성", input.getAttribute("id"));
+    console.log("class 속성", input.getAttribute("class"));
+    console.log("value 속성", input.getAttribute("value"));
+    console.log("readonly 속성", input.getAttribute("readonly"));  //--- readonly 속성에는 값이 없으므로 빈 문자열("")
+    console.log("name 속성", input.getAttribute("name"));  //----------- name 속성 자체가 없으므로 null
+  }
+
+</script>
+
+
 
 </body>
 </html>
