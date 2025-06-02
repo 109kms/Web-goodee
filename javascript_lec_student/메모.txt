@@ -1,2 +1,3 @@
 Note
 
+Attribute(속성) -> Property
