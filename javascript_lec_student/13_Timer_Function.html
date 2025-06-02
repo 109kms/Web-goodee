@@ -85,20 +85,53 @@
     //       전달한 인자 값에 따라 타이머가 동작합니다.
     //       timer(3) 호출하면 화면에 "3", "2", "1", "타이머완료" 메시지가 순차적으로 나타납니다.
 
-    const timer = (second) => {
-      setTimeout(() => {
-        if(second === 0)  // if(!second)
-          return alert('타이머완료');
-        document.write(`<div>${second--}</div>`);
-        timer(second);  // timer 함수 내부에서 timer 함수를 호출합니다. 이와같은 호출을 재귀 호출(Recursive Call)이라고 합니다.
-      }, 1000);
-    }
+  //   const timer = (second) => {
+  //     setTimeout(() => {
+  //       if(second === 0)  // if(!second)
+  //         return alert('타이머완료');
+  //       document.write(`<div>${second--}</div>`);
+  //       timer(second);  // timer 함수 내부에서 timer 함수를 호출합니다. 이와같은 호출을 재귀 호출(Recursive Call)이라고 합니다.
+  //     }, 1000);
+  //   }
 
-    timer(3);
+  //   timer(3);
   }
 
+</script>
+
+<script>
+
+  {
+    // let count = 0;
+    // const id = setInterval(() => {
+    //   count++;
+    //   console.log(count + "번째 Hello World");
+    //   if(count === 5) {
+    //     clearInterval(id);  //-- id를 가진 interval을 중지합니다.
+    //   }
+    // }, 1000);  //-- 1000밀리초(1초)마다 화살표 함수를 반복해서 실행합니다.
+  }
+
+  {
+    // 연습) 1초마다 화면에 1씩 줄어든 값을 보여주는 타이머를 구현합니다.
+    //       전달한 인자 값에 따라 타이머가 동작합니다.
+    //       timer(3) 호출하면 화면에 "3", "2", "1", "타이머완료" 메시지가 순차적으로 나타납니다.
+
+    const time = (second) => {
+      const id = setInterval(() => {
+        if(second === 0) {
+          clearInterval(id);
+          return alert('타이머완료');
+        }
+        document.write(`<div>${second--}</div>`);
+      }, 1000)
+    }
+
+    time(3);
 
 
+     
+  }
 
 </script>
 
