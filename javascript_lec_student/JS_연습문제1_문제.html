@@ -152,13 +152,30 @@
     <input type="password" id="pw">와 <input type="text" id="pw">를 서로 스위칭하고, 아이콘도 스위칭하세요.
     아이콘은 fontawesome의 무료 아이콘을 활용하세요.
   -->
+    <style>
+      @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css);
+    </style>
   <div>
     <input type="password" id="pw">
     <span id="icon">
-      <i class="fa-regular fa-eye"></i>
+      <i class="far fa-eye"></i>
     </span>
   </div>
   <script>
+    function switchIcon() {
+      document.getElementById('icon').onclick = function() {
+        const inp = document.getElementById('pw');
+        const icon = document.getElementById('icon');
+        if(inp.type === 'password') {
+          inp.type = 'text';
+          icon.innerHTML = '<i class="far fa-eye-slash"></i>';
+        } else {
+          inp.type = 'password';
+          icon.innerHTML = '<i class="far fa-eye"></i>';
+        }
+      }
+    }
+    switchIcon();
   </script>
 
   <hr>
