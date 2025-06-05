@@ -189,7 +189,20 @@
     개별 선택 구현 시 모든 체크박스들의 checked 프로퍼티 값을 더해서 모두 체크되었는지 확인하는 방법을 고려해 보세요.
   -->
   <style>
-
+    .agree input[type=checkbox] {
+      display: none;
+    }
+    .agree label {
+      padding-left: 20px;
+      background-image: url('../assets/images/check1.png');
+      background-size: 16px 16px;
+      background-repeat: no-repeat;
+      background-position: 0 3px;
+      cursor: pointer;
+    }
+    .agree input[type=checkbox]:checked + label {
+      background-image: url('../assets/images/check2.png');
+    }
   </style>
   <div class="agree">
     <div>
@@ -210,7 +223,22 @@
     </div>
   </div>
   <script>
-    
+    const chkAll = document.getElementById('chk_all');
+    const chkEach = document.getElementsByClassName('chk_each');
+    chkAll.onclick = function(e) {
+      for(let i = 0; i < chkEach.length; i++) {
+        chkEach[i].checked = e.target.checked;
+      }
+    }
+    for(let i = 0; i < chkEach.length; i++) {
+      chkEach[i].onclick = function(e) {
+        let total = 0;
+        for(let j = 0; j < chkEach.length; j++) {
+          total += chkEach[j].checked;
+        }
+        chkAll.checked = (total === chkEach.length);
+      }
+    }
   </script>
 
   <hr>
@@ -230,7 +258,24 @@
   </div>
 
   <script>
+
     const words = ["자바", "자바스크립트", "데이터베이스", "스프링", "도커",];
+    const word = document.getElementById('word');
+    word.textContent = words[Math.floor(Math.random() * words.length)];
+
+    const input = document.getElementById('input');
+    const btn = document.getElementById('btn');
+    btn.addEventListener('click', event => {
+      if(word.textContent[word.textContent.length - 1] === input.value[0]) {
+        alert('딩동댕');
+        word.textContent = input.value;
+      } else {
+        alert('땡');
+      }
+      input.value = '';
+      input.focus();
+    });
+
   </script>
 
 </body>
