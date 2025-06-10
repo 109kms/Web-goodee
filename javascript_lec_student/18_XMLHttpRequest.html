@@ -191,6 +191,9 @@
       if(xhr.readyState === 4 && xhr.status === 200) {
         const response = JSON.parse(xhr.responseText);
         const imageUrl = response[0].url;
+        // const { url, width } = JSON.parse(xhr.responseText)[0];
+        // const str = `<img alt="반려동물" src="${url} width="${width}">`;
+        // document.getElementById
         document.getElementById('random-image').innerHTML = `<img src="${imageUrl}" alt="Random Cat" width="300" height="300">`;
         // console.log(xhr.responseText);
         // console.log(JSON.parse(xhr.responseText));
@@ -227,7 +230,7 @@
       if(xhr.readyState === 4 && xhr.status === 200) {
         const todos = JSON.parse(xhr.responseText);
         todos.map(todo => {  // todo: { userId:'', id:'', title:'', completed:true }
-          const str = `<tr><td>${todo.userId}</td><td>${todo.id}</td><td>${todo.title}</td><td><input type="checkbox"></td>`
+          const str = `<tr><td>${todo.userId}</td><td>${todo.id}</td><td>${todo.title}</td><td><input type="checkbox"${todo.completed ? 'checked' : ''}></td></tr>`
           return str;
         }).forEach(tr => document.getElementById('todos').innerHTML += tr);
         // const tbody = document.getElementById('todos');
