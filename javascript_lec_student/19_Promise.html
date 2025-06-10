@@ -219,7 +219,7 @@
       })
       xhr.send();
     })
-    .then((jsonData) => {  // jsonData = {userId:1, id:100, title:'...', body:'...'}
+    .then((jsonData) => {  // jsonData = {userId:1, id:100, title:'....', body:'....'}
       const xhr = new XMLHttpRequest();
       xhr.open('get', `https://jsonplaceholder.typicode.com/users/${jsonData.userId}`);  //-- 첫 번째 요청의 결과를 이용해서 두 번째 요청을 진행합니다.
       xhr.addEventListener('load', function() {
