@@ -66,5 +66,99 @@
   }
 -->
 
+<div id="root1"></div>
+<script type="text/babel">
+
+  class Spin1 extends React.Component {
+
+    //----- state 선언 및 초기화
+    state = {
+      number: 0,
+    }
+    //----- 증가용 이벤트 핸들러
+    increaseHandler = () => {
+      this.setState({
+        number: this.state.number + 1
+      })
+    }
+
+    //----- 감소용 이벤트 핸들러
+    decreaseHandler = () => {
+      this.setState({
+        number: this.state.number -2
+      })
+    }
+
+
+    //----- rendering
+    render() {
+      return (
+        <>
+          <h1>{this.state.number}</h1> {/*this는 Spin1을 의미*/}
+          <button onClick={this.increaseHandler}>👍</button>
+          <button onClick={this.decreaseHandler}>👎👎</button>
+        </>
+      )
+    }
+
+  }
+
+  ReactDOM.createRoot(document.getElementById('root1')).render(<Spin1 />)
+
+</script>
+
+<hr>
+
+<div id="root2"></div>
+<script type="text/babel">
+
+  class Spin2 extends React.Component {
+
+    //----- 생성자를 이용한 state 선언 및 초기화
+    constructor(props) {
+      super(props);
+      this.state = {
+        number: 0
+      }
+    }
+
+    //----- 증가용 이벤트 핸들러
+    increaseHandler = () => {
+      this.setState((prevState) => {
+        return {
+          number: prevState.number + 1
+        }
+      })
+    }
+
+
+    //----- 감소용 이벤트 핸들러
+    decreaseHandler = () => {
+      this.setState((prevState) => {
+        return {
+          number: prevState.number - 1
+        }
+      })
+    }
+
+    //----- rendering
+    render() {
+      const { number } = this.state;
+      const textColor = number === 0 ? 'black' : number > 0 ? 'red' : 'blue';
+      return (
+        <>
+          <h1 style={{ color: textColor }}>{number}</h1> 
+          <button onClick={this.increaseHandler}>👍</button>
+          <button onClick={this.decreaseHandler}>👎</button>
+        </>
+      )
+    }
+    
+
+  }
+  ReactDOM.createRoot(document.getElementById('root2')).render(<Spin2 />)
+
+</script>
+
 </body>
 </html>
