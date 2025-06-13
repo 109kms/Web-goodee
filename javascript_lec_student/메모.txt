@@ -1,7 +1,0 @@
-Note
-
-Attribute(속성) -> Property
-
-Event Handler Property
-  onclick, onmouseover, onkeydown 등과 같은 속성을 사용하여 이벤트를 처리할 수 있음.
-  
