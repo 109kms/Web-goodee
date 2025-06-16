@@ -21,6 +21,7 @@
 2. React.useState() 구문
   1) 형식
     const [state, setState] = React.useState(initialState)
+         state 이름                             초기값
   2) 설명
     (1) state
       - 상태 변수의 이름입니다.
@@ -32,10 +33,230 @@
       - 상태 변수의 초깃값입니다.
 
 
-3.. React의 상태 업데이트 함수의 두 가지 방식
+3. React의 상태 업데이트 함수의 두 가지 방식
   1) 값을 직접 전달하는 방식
   2) 함수(이전 상태 값을 받아 새로운 상태 값을 반환하는 함수)를 전달하는 방식 (함수형 업데이트)
 -->
+
+<div id="root1"></div>
+<script type="text/babel">
+
+  const Spin1 = () => {
+
+    // state = { number: 0 }
+    // number 변경 함수: setNumber
+    const [number, setNumber] = React.useState(0);
+
+    // 증가용 이벤트 핸들러
+    const increaseHandler = (e) => {
+      // number = number + 1;  //-- 사용할 수 없는 표현식 XXXXXX
+      setNumber(number + 10);  //--- 반드시 상태 업데이트 함수를 사용해야만 합니다.
+    }
+
+    // 감소용 이벤트 핸들러
+    const decreaseHandler = (e) => {
+      setNumber(number - 10);
+    }
+
+    return(
+      <>
+        <h1>{number}</h1>
+        <button onClick={increaseHandler}>🤩</button>
+        <button onClick={decreaseHandler}>⛈️</button>
+      </>
+    )
+
+  }
+  ReactDOM.createRoot(document.getElementById('root1')).render(<Spin1/>)
+
+</script>
+
+<hr>
+
+<div id="root2"></div>
+<script type="text/babel">
+
+  const Spin2 = () => {
+
+    const [number, setNumber] = React.useState(0);
+
+    const increaseHandler = () => {
+      //----- 함수형 업데이트
+      // 현재 state를 전달하고, 새로운 state를 반환하는 콜백 함수를 사용하는 방식입니다.
+      setNumber(prevNumber => prevNumber + 1);
+    }
+
+    const decreaseHandler = () => {
+      setNumber(prevNumber => prevNumber - 1);
+    }
+
+    return (
+      <>
+        <h1>{number}</h1>
+        <button onClick={increaseHandler}>(❁´◡`❁)</button>
+        <button onClick={decreaseHandler}>☆*: .｡. o(≧▽≦)o .｡.:*☆</button>
+      </>
+    )
+  }
+  ReactDOM.createRoot(document.getElementById('root2')).render(<Spin2/>);
+
+</script>
+
+<hr>
+
+<div id="root3"></div>
+<script type="text/babel">
+
+  //----- 입력 상자와 state
+
+  const InputComponent = () => {
+
+    const [value, setValue] = React.useState('');
+
+    // 입력 상자에 입력한 내용이 변하면 발생하는 이벤트: onChange
+    const handleChange = (e) => {
+      setValue(e.target.value);
+      console.log(e.target.value);
+    }
+
+    return (
+      <>
+        <input
+          type='text'
+          value={value}
+          onChange={handleChange}
+          maxLength={10}
+          placeholder='값을 입력하세요'
+          autoFocus
+        />
+        <h1>{value}</h1>
+      </>
+    )
+  }
+  ReactDOM.createRoot(document.getElementById('root3')).render(<InputComponent/>);
+
+</script>
+
+<hr>
+
+<div id="root4"></div>
+<script type="text/babel">
+
+  const CheckboxComponent = () => {
+
+    const [asdf, setAsdf] = React.useState(false);
+    // 체크 상태가 변할때마다 발생하는 이벤트: onChange
+    const handleChange = (e) => {
+      console.log(e.target.checked);
+      setAsdf(e.target.checked);
+    }
+
+    return (
+      <>
+        <input
+          type='checkbox'
+          id='chk'
+          onChange={handleChange}
+          checked={asdf}
+        />
+        <label htmlFor='chk'>체크박스</label>
+        {/* boolean 값은 표현식으로 화면에 표시할 수 없습니다. 문자열로 바꿔서 표시합니다. */}
+        <h1>{asdf ? '체크됨' : '체크되지않음'}</h1>
+      </>
+    )
+  }
+  ReactDOM.createRoot(document.getElementById('root4')).render(<CheckboxComponent />);
+
+</script>
+
+<hr>
+
+<div id="root5"></div>
+<script type="text/babel">
+
+  //----- select 태그와 state
+
+  // select 태그에 skt, kt, lgu+ 등록하고 선택한 통신사를 state에 저장하고 화면에 표시하기
+
+  const SelectComponent = () => {
+
+    const [selectedValue, setSelectedValue] = React.useState('');
+
+    const handleChange = (e) => {
+      console.log(e.target);
+      setSelectedValue(e.target.value);
+    }
+
+
+    return (
+      <>
+        <select value={selectedValue} onChange={handleChange}>
+          <option disabled value=''>통신사를 선택해주세요.</option>
+          <option>skt</option>
+          <option>kt</option>
+          <option>lgu+</option>
+        </select>
+        <h1>선택한 통신사: {selectedValue}</h1>
+      </>
+    )
+
+  }
+
+  ReactDOM.createRoot(document.getElementById('root5')).render(<SelectComponent />);
+
+</script>
+
+<hr>
+
+<div id="root6"></div>
+<script type="text/babel">
+
+  //----- 로그인 화면과 state (state 2개 사용)
+
+  const LoginComponent = () => {
+
+    // state 2개
+    const [id, setId] = React.useState('');
+    const [pw, setPw] = React.useState('');
+
+    // submit 이벤트 핸들러
+    const handleSubmit = (e) => {
+      if(id === '' | pw === '') {
+        alert('아이디와 비밀번호 입력을 확인하세요.');
+        e.preventDefault();  //-- 서브밋을 막습니다.
+        return;  //-------------- 이벤트 핸들러의 실행을 막습니다.
+      }
+      alert(`id: ${id}, pw: ${pw}`);
+    }
+
+    return (
+      <form
+        onSubmit={handleSubmit}
+      >
+        <input
+          type='text'
+          value={id}
+          placeholder='아이디'
+          onChange={e => setId(e.target.value)}
+        />
+        <br/>
+        <input
+          type='password'
+          value={pw}
+          placeholder='비밀번호'
+          onChange={e => setPw(e.target.value)}
+          maxLength={50}
+        />
+        <br/>
+        <button type='submit'>로그인</button>
+      </form>
+    )
+  }
+
+  ReactDOM.createRoot(document.getElementById('root6')).render(<LoginComponent />);
+
+</script>
+
 
 </body>
 </html>
