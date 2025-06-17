@@ -23,6 +23,11 @@
             id='description'
             value={description}
             onChange={onChange}
+            onKeyDown={e => {
+              if(e.key === 'Enter') {
+                onClick(e);
+              }
+            }}
           />
           <button type='button' onClick={onClick}>추가</button>
         </div>
@@ -80,19 +85,30 @@
           <div className='todos'>
             {
               todos.map(todo => (
-                <div className='todo' key={todo.todoNo}>
-                  <input
-                    type='checkbox'
-                    id={todo.todoNo}
-                    onChange={onCheckboxChange}
-                  />
-                  <label htmlFor={todo.todoNo} style={{ textDecoration: todo.isDone ? 'line-through' : 'none' }}>{todo.description}</label>
-                  <button type='button' data-todo-no={todo.todoNo} onClick={onDeleteClick}>❌</button>
-                </div>
+                // 아래 div를 <TodoListItem> 컴포넌트로 분리하기.
+                <TodoListItem
+                  key={todo.todoNo}
+                  todo={todo}
+                  onChange={onCheckboxChange}
+                  onClick={onDeleteClick}
+                />
               ))
             }
           </div>
         </>
+      )
+    }
+    const TodoListItem = ({todo, onChange, onClick}) => {
+      return (
+        <div className='todo' key={todo.todoNo}>
+              <input
+                type='checkbox'
+                id={todo.todoNo}
+                onChange={onChange}
+              />
+            <label htmlFor={todo.todoNo} style={{ textDecoration: todo.isDone ? 'line-through' : 'none' }}>{todo.description}</label>
+          <button type='button' data-todo-no={todo.todoNo} onClick={onClick}>❌</button>
+        </div>     
       )
     }
 
