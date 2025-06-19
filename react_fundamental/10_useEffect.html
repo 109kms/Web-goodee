@@ -331,10 +331,13 @@
   //       입력을 잘못한 뒤 Enter를 누르면, 아무 일도 일어나지 않도록 처리하세요.
 
   const RandomUUID = () => {
+
     const [randomUUid, setRandomUUid] = React.useState('');
+
     React.useEffect(() => {
       setRandomUUid(window.crypto.randomUUID())
     },[])
+    
     return (
       <>
         <h1>{randomUUid}</h1>
